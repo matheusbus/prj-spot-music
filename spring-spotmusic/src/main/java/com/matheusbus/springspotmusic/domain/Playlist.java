@@ -27,8 +27,8 @@ public class Playlist {
     @Column(nullable = false, length = 60)
     private String nome;
 
-    @NotBlank(message = "A descrição não pode estar em branco.")
-    @Size(min = 10, max = 100, message = "O tamanho deve estar entre 10 e 100 caracteres.")
+    @NotBlank(message = "O campo 'descrição' não pode estar em branco.")
+    @Size(min = 10, max = 100, message = "O campo 'descrição' deve conter entre 10 e 100 caracteres.")
     @Column(nullable = false, length = 100)
     private String descricao;
 

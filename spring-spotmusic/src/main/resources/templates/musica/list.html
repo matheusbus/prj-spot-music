@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotMusic - Músicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Spotmusic</h1>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" th:href="@{/playlists/{playlistId}/musicas/cadastro(playlistId=${playlistId})}">
+          Nova música</a>
+    </div>
+
+    <hr/>
+    <div th:if="${musicas != null}">
+        <h4>
+            Músicas da playlist
+        </h4>
+
+        <div th:if="${mensagem != null}">
+            <div class="alert alert-info" role="alert">
+                <span th:text="${mensagem == null ? '&nbsp;' : mensagem}">mensagem</span>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Banda</th>
+                <th>Nota</th>
+                <th>Ação</th>
+            </tr>
+            </thead>
+            <tr th:each="musica : ${musicas}">
+                <td th:text="${musica.titulo}">titulo</td>
+                <td th:text="${musica.banda}">banda</td>
+                <td th:text="${musica.nota}">nota</td>
+                <td>
+                    <a class="btn btn-sm btn-info" th:href="@{/playlists/{playlistId}/musicas/{musicaId}/atualizar(
+                      playlistId=${playlistId},musicaId=${musica.id})}">Editar</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{/playlists/{playlistId}/musicas/{musicaId}/remover(
+                      playlistId=${playlistId},musicaId=${musica.id})}">Excluir</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${#lists.isEmpty(musicas)}">
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 músicas cadastradas!
+        </div>
+    </div>
+
+    <hr/>
+    <a class="btn btn-light" th:href="@{/playlists/listar}">Voltar</a>
+
+    <hr/>
+    <footer class="footer">
+        <p>&copy; 2023 Matheus Buschermoehle</p>
+    </footer>
+
+</div>
+</body>
+</html>

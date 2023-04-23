@@ -1,6 +1,8 @@
 package com.matheusbus.springspotmusic.domain;
 
 
+import org.hibernate.validator.constraints.Range;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,10 @@ public class Musica {
     @Size(min = 2, max = 60)
     @Column(nullable = false, length = 60)
     private String banda;
+
+    @Range(min = 0, max = 10)
+    @Column(nullable = false)
+    private int nota;
 
     @ManyToOne
     @JoinColumn(name = "playlist_id")
@@ -91,6 +97,14 @@ public class Musica {
     @Override
     public String toString() {
         return "Musica [id=" + id + ", titulo=" + titulo + ", banda=" + banda + ", playlist=" + playlist + "]";
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
     }
     
 }

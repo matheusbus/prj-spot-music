@@ -21,18 +21,18 @@ public class MusicaoDAOImpl implements MusicaDAO{
     }
 
     @Override
-    public List<Musica> recuperarPorPlaylist(long playlist_id) {
-        return em.createQuery("select m from Musica m where m.playlist_id = :playlist_id", Musica.class)
-            .setParameter("playlist_id", playlist_id)
-            .getResultList();
+    public List<Musica> recuperarPorPlaylist(long playlistId) {
+        return em.createQuery("select m from Musica m where m.playlist.id = :playlistId", Musica.class)
+                .setParameter("playlistId", playlistId)
+                .getResultList();
     }
 
     @Override
-    public Musica recuperarPorPlaylistIdEMusicaId(long playlist_id, long musica_id) {
-        return em.createQuery("select m from Musica m where m.playlist.id = :playlist_id and m.id = :musica_id", Musica.class)
-            .setParameter("playlist_id", playlist_id)
-            .setParameter("musica_id", musica_id)
-            .getSingleResult();
+    public Musica recuperarPorPlaylistIdEMusicaId(long playlistId, long musicaId) {
+        return em.createQuery("select m from Musica m where m.playlist.id = :playlistId and m.id = :musicaId", Musica.class)
+                .setParameter("playlistId", playlistId)
+                .setParameter("musicaId", musicaId)
+                .getSingleResult();
     }
 
     @Override
