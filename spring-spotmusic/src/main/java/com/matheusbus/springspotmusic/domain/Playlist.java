@@ -22,13 +22,13 @@ public class Playlist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank
-    @Size(min = 2, max = 60)
+    @NotBlank(message = "O nome não pode estar em branco.")
+    @Size(min = 2, max = 60, message = "O tamanho deve estar entre 2 e 60 caracteres.")
     @Column(nullable = false, length = 60)
-    private String titulo;
+    private String nome;
 
-    @NotBlank
-    @Size(min = 10, max = 100)
+    @NotBlank(message = "A descrição não pode estar em branco.")
+    @Size(min = 10, max = 100, message = "O tamanho deve estar entre 10 e 100 caracteres.")
     @Column(nullable = false, length = 100)
     private String descricao;
 
@@ -45,12 +45,12 @@ public class Playlist {
         this.id = id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNome() {
+        return nome;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getDescricao() {
