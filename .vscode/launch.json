@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringSpotmusicApplication<spring-spotmusic>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.matheusbus.springspotmusic.SpringSpotmusicApplication",
+            "projectName": "spring-spotmusic",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

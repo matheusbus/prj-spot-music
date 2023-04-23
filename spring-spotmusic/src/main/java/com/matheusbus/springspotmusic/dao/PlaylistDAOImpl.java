@@ -10,7 +10,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Repository
-public class PlaylistDAOImpl implements PlayslitDAO{
+public class PlaylistDAOImpl implements PlaylistDAO{
 
     @PersistenceContext
     private EntityManager em;

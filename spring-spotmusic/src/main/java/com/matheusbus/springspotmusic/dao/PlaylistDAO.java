@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.matheusbus.springspotmusic.domain.Playlist;
 
-public interface PlayslitDAO {
+public interface PlaylistDAO {
 
     void salvar(Playlist playlist);
     List<Playlist> recuperar();
